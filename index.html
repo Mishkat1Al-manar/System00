@@ -3,148 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>حصر استئذانات الطلاب</title>
-  <!-- استيراد خط Cairo -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Cairo', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f0f4f8;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 15px 30px;
-      background: linear-gradient(to left, #0d47a1, #1976d2);
-      color: #fff;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    header img {
-      height: 65px;
-      margin-left: 20px;
-    }
-
-    header h1 {
-      font-size: 24px;
-      margin: 0;
-    }
-
-    .container {
-      padding: 30px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .form-box {
-      background: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-      margin-bottom: 30px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      align-items: flex-end;
-    }
-
-    .form-box label {
-      font-weight: bold;
-      margin-bottom: 5px;
-      display: block;
-    }
-
-    .form-box input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 15px;
-    }
-
-    .form-box button {
-      grid-column: span 1;
-      background: linear-gradient(to right, #1565c0, #1e88e5);
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 15px;
-      transition: background 0.3s;
-    }
-
-    .form-box button:hover {
-      background: #0d47a1;
-    }
-
-    .actions {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-
-    .actions button {
-      padding: 12px 25px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      background: #1976d2;
-      color: white;
-      font-size: 16px;
-      transition: background 0.3s;
-    }
-
-    .actions button:hover {
-      background: #0d47a1;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    th, td {
-      padding: 14px 10px;
-      text-align: center;
-      border-bottom: 1px solid #eee;
-      font-size: 15px;
-    }
-
-    th {
-      background: #1565c0;
-      color: white;
-      font-size: 16px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 18px;
-      margin-top: 30px;
-      background: #e0e0e0;
-      font-weight: bold;
-      color: #333;
-      font-size: 14px;
-    }
-
-    @media print {
-      header, .form-box, .actions, footer {
-        display: none;
-      }
-      table {
-        box-shadow: none;
-      }
-    }
+    body {font-family: 'Cairo', sans-serif; background:#f0f4f8; margin:0; padding:0;}
+    header {display:flex; align-items:center; padding:15px 30px; background:linear-gradient(to left,#0d47a1,#1976d2); color:#fff;}
+    header img {height:65px; margin-left:20px;}
+    .container {padding:30px 20px; max-width:1200px; margin:auto;}
+    .form-box {background:#fff; padding:25px; border-radius:12px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px;}
+    .form-box label {font-weight:bold; margin-bottom:5px; display:block;}
+    .form-box input, .form-box select {width:100%; padding:10px; border:1px solid #ccc; border-radius:8px; font-size:15px;}
+    .form-box button {background:linear-gradient(to right,#1565c0,#1e88e5); color:#fff; border:none; cursor:pointer; font-weight:bold; padding:12px 20px; border-radius:8px; font-size:15px;}
+    .form-box button:hover {background:#0d47a1;}
+    table {width:100%; border-collapse:collapse; background:#fff; border-radius:12px; overflow:hidden; margin-top:20px;}
+    th,td {padding:14px 10px; text-align:center; border-bottom:1px solid #eee; font-size:15px;}
+    th {background:#1565c0; color:#fff;}
+    footer {text-align:center; padding:18px; margin-top:30px; background:#e0e0e0; font-weight:bold;}
+    @media print {header,.form-box,.actions,footer {display:none;} table {box-shadow:none;}}
   </style>
 </head>
 <body>
@@ -160,15 +34,48 @@
   <div class="form-box">
     <div>
       <label for="name">🧑‍🎓 اسم الطالب:</label>
-      <input type="text" id="name">
+      <select id="name" required>
+        <option value="">اختر الطالب</option>
+        <option value="محمد أحمد">محمد أحمد</option>
+        <option value="سعود خالد">سعود خالد</option>
+        <option value="عبدالله فهد">عبدالله فهد</option>
+        <option value="راكان ناصر">راكان ناصر</option>
+      </select>
     </div>
     <div>
       <label for="class">🏫 الصف:</label>
-      <input type="text" id="class">
+      <select id="class" required>
+        <option value="">اختر الصف</option>
+        <optgroup label="أول ثانوي">
+          <option>أول ثانوي 1</option>
+          <option>أول ثانوي 2</option>
+          <option>أول ثانوي 3</option>
+          <option>أول ثانوي 4</option>
+        </optgroup>
+        <optgroup label="ثاني ثانوي">
+          <option>ثاني ثانوي 1</option>
+          <option>ثاني ثانوي 2</option>
+          <option>ثاني ثانوي 3</option>
+          <option>ثاني ثانوي 4</option>
+        </optgroup>
+        <optgroup label="ثالث ثانوي">
+          <option>ثالث ثانوي 1</option>
+          <option>ثالث ثانوي 2</option>
+          <option>ثالث ثانوي 3</option>
+          <option>ثالث ثانوي 4</option>
+        </optgroup>
+      </select>
     </div>
     <div>
       <label for="day">🗓️ اليوم:</label>
-      <input type="text" id="day" placeholder="مثال: الأحد">
+      <select id="day" required>
+        <option value="">اختر اليوم</option>
+        <option>الأحد</option>
+        <option>الاثنين</option>
+        <option>الثلاثاء</option>
+        <option>الأربعاء</option>
+        <option>الخميس</option>
+      </select>
     </div>
     <div>
       <label for="date">📅 التاريخ:</label>
@@ -185,11 +92,6 @@
     <div>
       <button onclick="saveData()">حفظ الاستئذان</button>
     </div>
-  </div>
-
-  <!-- أزرار -->
-  <div class="actions">
-    <button onclick="printTable()">طباعة القائمة</button>
   </div>
 
   <!-- جدول البيانات -->
@@ -213,6 +115,8 @@
 </footer>
 
 <script>
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbykW74vvwthlqkPkdbl5tBvnSPbNVGQXgrlTVlTlON-MKhy2lU9D9FDriVBXYD6DmcY/exec"
+
 function saveData() {
   const name = document.getElementById("name").value.trim();
   const studentClass = document.getElementById("class").value.trim();
@@ -226,27 +130,20 @@ function saveData() {
     return;
   }
 
-  const record = {
-    name,
-    studentClass,
-    day,
-    date,
-    time,
-    reason
-  };
+  const record = {name, class: studentClass, day, date, time, reason};
 
-  let records = JSON.parse(localStorage.getItem("records")) || [];
-  records.push(record);
-  localStorage.setItem("records", JSON.stringify(records));
-  addRow(record);
-
-  // مسح الحقول
-  document.getElementById("name").value = "";
-  document.getElementById("class").value = "";
-  document.getElementById("day").value = "";
-  document.getElementById("date").value = "";
-  document.getElementById("time").value = "";
-  document.getElementById("reason").value = "";
+  // إرسال البيانات إلى Google Sheet
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: "POST",
+    body: JSON.stringify(record)
+  })
+  .then(res => res.text())
+  .then(msg => {
+    alert(msg);
+    addRow(record);
+    clearFields();
+  })
+  .catch(err => alert("حدث خطأ في حفظ البيانات: " + err));
 }
 
 function addRow(record) {
@@ -254,7 +151,7 @@ function addRow(record) {
   const row = document.createElement("tr");
   row.innerHTML = `
     <td>${record.name}</td>
-    <td>${record.studentClass}</td>
+    <td>${record.class}</td>
     <td>${record.day}</td>
     <td>${record.date}</td>
     <td>${record.time}</td>
@@ -263,18 +160,14 @@ function addRow(record) {
   tableBody.appendChild(row);
 }
 
-function loadData() {
-  const records = JSON.parse(localStorage.getItem("records")) || [];
-  records.forEach(r => addRow(r));
+function clearFields() {
+  document.getElementById("name").value = "";
+  document.getElementById("class").value = "";
+  document.getElementById("day").value = "";
+  document.getElementById("date").value = "";
+  document.getElementById("time").value = "";
+  document.getElementById("reason").value = "";
 }
-
-function printTable() {
-  window.print();
-}
-
-window.onload = function () {
-  loadData();
-};
 </script>
 
 </body>
